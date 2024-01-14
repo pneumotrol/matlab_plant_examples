@@ -2,9 +2,6 @@ function param = plant_param()
     % dimensions
     param.xdim = 2;
     param.udim = 1;
-    
-    % equilibrium point
-    param.xe = [0;0];
 
     % parameters
     param.m = 1; % mass (kg)

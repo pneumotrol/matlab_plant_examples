@@ -1,21 +1,23 @@
-function sysc = plant_sysc(param)
+function sysc = plant_sysc(param,~)
     m = param.m;
     d = param.d;
 
-    A = [
+    % equilibrium point
+    sysc.xe = [0;0];
+
+    % coefficients of state eqiation
+    sysc.A = [
         0, 1;
         0,-(d/m)
         ];
 
-    B = [
+    sysc.B = [
         0;
         (1/m)];
 
-    C = [
+    sysc.C = [
         1, 0;
         ];
 
-    D = 0;
-
-    sysc = ss(A,B,C,D);
+    sysc.D = 0;
 end

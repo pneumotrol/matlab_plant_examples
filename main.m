@@ -5,6 +5,7 @@ clc;
 examples = [
     "mass_damper_spring";
     "mass_damper";
+    "pendulum";
     ];
 
 for i = 1:length(examples)

@@ -1,9 +1,10 @@
 function dxdt = plant_ode(~,x,u,param)
+    g = param.g;
     m = param.m;
-    d = param.d;
+    l = param.l;
 
     dxdt = [
         x(2);
-        -(d/m)*x(2)+(1/m)*u(1);
+        (g/l)*sin(x(1))+(1/(m*l^2))*u(1);
         ];
 end
