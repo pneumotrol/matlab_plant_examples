@@ -18,11 +18,9 @@ function sysc = plant_sysc(param,mode)
                 0;
                 (1/(m*l^2))];
         
-            sysc.C = [
-                1, 0;
-                ];
+            sysc.C = eye(2);
         
-            sysc.D = 0;
+            sysc.D = zeros(2,1);
         case {2,"top"}
     end
 end

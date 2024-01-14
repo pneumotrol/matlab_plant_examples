@@ -16,9 +16,7 @@ function sysc = plant_sysc(param,~)
         0;
         (1/m)];
 
-    sysc.C = [
-        1, 0;
-        ];
+    sysc.C = eye(2);
 
-    sysc.D = 0;
+    sysc.D = zeros(2,1);
 end

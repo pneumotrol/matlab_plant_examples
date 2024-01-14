@@ -24,7 +24,7 @@ function sysc = plant_sysc(param,~)
         0,(1/m2);
         ];
 
-    sysc.C = eye(4,4);
+    sysc.C = eye(4);
 
     sysc.D = zeros(4,2);
 end
