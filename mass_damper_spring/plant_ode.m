@@ -5,6 +5,6 @@ function dxdt = plant_ode(~,x,u,param)
 
     dxdt = [
         x(2);
-        -(k/m)*x(1)-(d/m)*x(2)+(1/m)*u(1);
+        (-k*x(1)-d*x(2)+u(1))/m;
         ];
 end
