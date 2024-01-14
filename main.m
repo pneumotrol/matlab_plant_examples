@@ -6,6 +6,7 @@ examples = [
     "mass_damper_spring";
     "mass_damper";
     "pendulum";
+    "mass_damper_spring_2DOF";
     ];
 
 for i = 1:length(examples)
