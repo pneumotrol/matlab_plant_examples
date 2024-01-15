@@ -4,16 +4,9 @@ function sysc = plant_sysc(param,option)
     a = param.a;
     c = param.c;
 
-    switch option.mode
-        case {"output"} % linearize around output
-            % equilibrium point
-            sysc.xe = option.xe;
-            sysc.ue = c*a*sqrt(2*g*sysc.xe);
-        case {"input"} % linearize around input
-            % equilibrium point
-            sysc.ue = option.ue;
-            sysc.xe = (sysc.ue^2)/(2*g*(c*a)^2);
-    end
+    % equilibrium point
+    sysc.xe = option.xe;
+    sysc.ue = c*a*sqrt(2*g*sysc.xe);
 
     % coefficients of state equation
     sysc.A = -(c*a*sqrt(2*g))/(2*A*sqrt(sysc.xe));
