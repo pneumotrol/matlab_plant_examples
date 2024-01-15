@@ -1,4 +1,4 @@
-function sysc = plant_sysc(param,mode)
+function sysc = plant_sysc(param,option)
     g = param.g;
     M = param.M;
     D = param.D;
@@ -7,17 +7,18 @@ function sysc = plant_sysc(param,mode)
     lg = param.lg;
     d = param.d;
 
-    switch mode
+    switch option.mode
         case {"bottom"}
             % equilibrium point
             sysc.xe = [0;0;0;0];
+            sysc.ue = 0;
 
             % coefficients of state equation
             sysc.A = [
                 0.0,0.0,1.0,0.0;
                 0.0,0.0,0.0,1.0;
-                0.0,-(g*lg^2*m^2)/(J*M+J*m+lg^2*M*m),-(D*(J+lg^2*m))/(J*M+J*m+lg^2*M*m),(d*lg*m)/(J*M+J*m+lg^2*M*m);
-                0.0,(g*lg*m*(M+m))/(J*M+J*m+lg^2*M*m),(D*lg*m)/(J*M+J*m+lg^2*M*m),-(d*(M+m))/(J*M+J*m+lg^2*M*m);
+                0.0,(g*lg^2*m^2)/(J*M+J*m+lg^2*M*m),-(D*(J+lg^2*m))/(J*M+J*m+lg^2*M*m),(d*lg*m)/(J*M+J*m+lg^2*M*m);
+                0.0,-(g*lg*m*(M+m))/(J*M+J*m+lg^2*M*m),(D*lg*m)/(J*M+J*m+lg^2*M*m),-(d*(M+m))/(J*M+J*m+lg^2*M*m);
                 ];
 
             sysc.B = [
@@ -33,13 +34,14 @@ function sysc = plant_sysc(param,mode)
         case {"top"}
             % equilibrium point
             sysc.xe = [0;pi;0;0];
+            sysc.ue = 0;
 
             % coefficients of state equation
             sysc.A = [
                 0.0,0.0,1.0,0.0;
                 0.0,0.0,0.0,1.0;
-                0.0,-(g*lg^2*m^2)/(J*M+J*m+lg^2*M*m),-(D*(J+lg^2*m))/(J*M+J*m+lg^2*M*m),-(d*lg*m)/(J*M+J*m+lg^2*M*m);
-                0.0,-(g*lg*m*(M+m))/(J*M+J*m+lg^2*M*m),-(D*lg*m)/(J*M+J*m+lg^2*M*m),-(d*(M+m))/(J*M+J*m+lg^2*M*m);
+                0.0,(g*lg^2*m^2)/(J*M+J*m+lg^2*M*m),-(D*(J+lg^2*m))/(J*M+J*m+lg^2*M*m),-(d*lg*m)/(J*M+J*m+lg^2*M*m);
+                0.0,(g*lg*m*(M+m))/(J*M+J*m+lg^2*M*m),-(D*lg*m)/(J*M+J*m+lg^2*M*m),-(d*(M+m))/(J*M+J*m+lg^2*M*m);
                 ];
 
             sysc.B = [

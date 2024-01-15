@@ -4,7 +4,7 @@ function param = plant_param()
     param.udim = 1;
 
     % parameters
-    param.g = -9.81; % gravity acceleration (m/s^2)
+    param.g = 9.81; % gravity acceleration (m/s^2)
     param.m = 1; % mass (kg)
     param.l = 1; % length (m)
 end

@@ -4,7 +4,7 @@ function param = plant_param()
     param.udim = 1;
 
     % parameters
-    param.g = -9.81; % gravity acceleration (m/s^2)
+    param.g = 9.81; % gravity acceleration (m/s^2)
     param.M = 1; % mass of cart (kg)
     param.D = 0; % damping coefficent of cart (N.s/m)
     param.m = 1; % mass of pole (kg)
