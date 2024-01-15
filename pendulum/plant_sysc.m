@@ -8,7 +8,7 @@ function sysc = plant_sysc(param,mode)
             % equilibrium point
             sysc.xe = [0;0];
 
-            % coefficients of state eqiation
+            % coefficients of state equation
             sysc.A = [
                 0, 1;
                 (g/l),0;
@@ -25,7 +25,7 @@ function sysc = plant_sysc(param,mode)
             % equilibrium point
             sysc.xe = [pi;0];
 
-            % coefficients of state eqiation
+            % coefficients of state equation
             sysc.A = [
                 0, 1;
                 -(g/l),0;
