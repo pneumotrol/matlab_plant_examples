@@ -4,11 +4,13 @@ function param = plant_param()
     param.udim = 1;
 
     % parameters
-    param.g = 9.81; % gravity acceleration (m/s^2)
-    param.M = 1; % mass of cart (kg)
-    param.D = 0; % damping coefficent of cart (N.s/m)
-    param.m = 1; % mass of pole (kg)
-    param.J = 0.01; % moments of inertia of pole (kg.m^2)
-    param.lg = 1; % length from joint to center of mass (m)
+    % Control Tutorials for MATLAB and Simulink
+    % https://ctms.engin.umich.edu/CTMS/index.php?example=InvertedPendulum&section=SystemModeling
+    param.g = 9.8; % gravity acceleration (m/s^2)
+    param.M = 0.5; % mass of cart (kg)
+    param.D = 0.1; % damping coefficent of cart (N.s/m)
+    param.m = 0.2; % mass of pole (kg)
+    param.J = 0.006; % moments of inertia of pole (kg.m^2)
+    param.lg = 0.3; % length from joint to center of mass (m)
     param.d = 0.0; % damping coefficent of pole (N.s/m)
 end
