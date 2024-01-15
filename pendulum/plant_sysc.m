@@ -4,23 +4,39 @@ function sysc = plant_sysc(param,mode)
     l = param.l;
 
     switch mode
-        case {1,"bottom"}
+        case {"bottom"}
             % equilibrium point
             sysc.xe = [0;0];
-        
+
             % coefficients of state eqiation
             sysc.A = [
                 0, 1;
                 (g/l),0;
                 ];
-        
+
             sysc.B = [
                 0;
                 (1/(m*l^2))];
-        
+
             sysc.C = eye(2);
-        
+
             sysc.D = zeros(2,1);
-        case {2,"top"}
+        case {"top"}
+            % equilibrium point
+            sysc.xe = [pi;0];
+
+            % coefficients of state eqiation
+            sysc.A = [
+                0, 1;
+                -(g/l),0;
+                ];
+
+            sysc.B = [
+                0;
+                (1/(m*l^2))];
+
+            sysc.C = eye(2);
+
+            sysc.D = zeros(2,1);
     end
 end

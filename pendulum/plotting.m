@@ -1,6 +1,6 @@
 function plotting()
     assignin("base","x0",[0;0]);
-    assignin("base","mode",1);
+    assignin("base","mode","bottom");
 
     simIn = Simulink.SimulationInput("simulation");
     simOut = sim(simIn);
