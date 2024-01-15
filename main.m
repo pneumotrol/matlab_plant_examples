@@ -8,6 +8,7 @@ examples = [
     "pendulum";
     "mass_damper_spring_2DOF";
     "mass_damper_2DOF";
+    "cart_pole";
     ];
 
 for i = 1:length(examples)
