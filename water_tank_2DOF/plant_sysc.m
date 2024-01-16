@@ -9,10 +9,7 @@ function sysc = plant_sysc(param,option)
 
     % equilibrium point
     sysc.xe = option.xe;
-    sysc.ue = [
-        c1*a1*sqrt(2*g*sysc.xe(1));
-        c2*a2*sqrt(2*g*sysc.xe(2))-c1*a1*sqrt(2*g*sysc.xe(1));
-        ];
+    sysc.ue = c1*a1*sqrt(2*g*sysc.xe(1));
 
     % coefficients of state equation
     sysc.A = [
@@ -21,11 +18,11 @@ function sysc = plant_sysc(param,option)
     ];
 
     sysc.B = [
-        (1/A1),0;
-        0,(1/A2);
+        (1/A1);
+        0;
         ];
 
     sysc.C = eye(2);
 
-    sysc.D = zeros(2,2);
+    sysc.D = zeros(2,1);
 end

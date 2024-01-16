@@ -17,6 +17,6 @@ function dxdt = plant_ode(~,x,u,param)
 
     dxdt = [
         (-c1*a1*sqrt(2*g*x(1))+u(1))/A1;
-        (c1*a1*sqrt(2*g*x(1))-c2*a2*sqrt(2*g*x(2))+u(2))/A2;
+        (c1*a1*sqrt(2*g*x(1))-c2*a2*sqrt(2*g*x(2)))/A2;
         ];
 end
