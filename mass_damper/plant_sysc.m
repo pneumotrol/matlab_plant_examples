@@ -14,7 +14,8 @@ function sysc = plant_sysc(param,~)
 
     sysc.B = [
         0;
-        (1/m)];
+        (1/m)
+        ];
 
     sysc.C = eye(2);
 
