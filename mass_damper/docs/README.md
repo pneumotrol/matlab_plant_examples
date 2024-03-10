@@ -3,7 +3,7 @@
 ## System equations
 
 ```math
-m \ddot{q}(t) + c \dot{q}(t) = f(t)
+m \ddot{q}(t) + d \dot{q}(t) = f(t)
 ```
 
 ## State space equation (plant_ode.m)
@@ -15,7 +15,7 @@ q(t) \\ \dot{q}(t)
 =
 \left[ \begin{array}{c}
 \dot{q}(t) \\
--\frac{c}{m} \dot{q}(t) + \frac{1}{m} f(t)
+-\frac{d}{m} \dot{q}(t) + \frac{1}{m} f(t)
 \end{array} \right]
 =:
 f(x(t), u(t))
@@ -45,7 +45,7 @@ q(t) \\ \dot{q}(t)
 =
 \left[ \begin{array}{cc}
 0 & 1 \\
-0 & -\frac{c}{m}
+0 & -\frac{d}{m}
 \end{array} \right]
 
 \left[ \begin{array}{c}
@@ -72,7 +72,7 @@ f(t)
 | Description | Value |
 |-|-|
 | mass $`m \mathrm{[kg]}`$ | $`1.0`$ |
-| damping coefficient $`c \mathrm{[N \cdot s/m]}`$ | $`1.0`$ |
+| damping coefficient $`d \mathrm{[N \cdot s/m]}`$ | $`1.0`$ |
 
 ### Impulse response
 
