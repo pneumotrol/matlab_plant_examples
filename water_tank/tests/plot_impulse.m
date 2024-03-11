@@ -1,8 +1,11 @@
 function plot_impulse()
     ze = 1;
-    assignin("base","x0",ze);
-    assignin("base","option",struct("ze",ze));
+    param = plant_param();
+    option = struct("ze",ze);
+    sysc = plant_sysc(param,option);
 
+    assignin("base","x0",sysc.xe);
+    assignin("base","option",option);
     simIn = Simulink.SimulationInput("simulation_impulse");
     simOut = sim(simIn);
 

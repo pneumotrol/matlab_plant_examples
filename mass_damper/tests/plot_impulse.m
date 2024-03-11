@@ -1,6 +1,8 @@
 function plot_impulse()
-    assignin("base","x0",[0;0]);
+    param = plant_param();
+    sysc = plant_sysc(param);
 
+    assignin("base","x0",sysc.xe);
     simIn = Simulink.SimulationInput("simulation_impulse");
     simOut = sim(simIn);
 

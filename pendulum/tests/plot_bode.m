@@ -1,12 +1,12 @@
 function plot_bode()
     thetae = 0;
-    assignin("base","x0",[thetae;0]);
-    assignin("base","option",struct("thetae",thetae));
-
-    [A,B,C,D] = linmod("plant_simscape");
     param = plant_param();
     option = struct("thetae",thetae);
     sysc = plant_sysc(param,option);
+
+    assignin("base","x0",sysc.xe);
+    assignin("base","option",option);
+    [A,B,C,D] = linmod("plant_simscape");
 
     figure("Name","pendulum bode plot");
     opts = bodeoptions;

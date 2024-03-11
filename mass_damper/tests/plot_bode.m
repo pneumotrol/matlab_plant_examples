@@ -1,9 +1,9 @@
 function plot_bode()
-    assignin("base","x0",[0;0]);
-
-    [A,B,C,D] = linmod("plant_simscape");
     param = plant_param();
     sysc = plant_sysc(param);
+
+    assignin("base","x0",sysc.xe);
+    [A,B,C,D] = linmod("plant_simscape");
 
     figure("Name","mass_damper bode plot");
     opts = bodeoptions;

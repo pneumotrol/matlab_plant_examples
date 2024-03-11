@@ -1,12 +1,12 @@
 function plot_bode()
     ze = 1;
-    assignin("base","x0",[ze;0]);
-    assignin("base","option",struct("ze",ze));
-
-    % [A,B,C,D] = linmod("plant_simscape");
     param = plant_param();
     option = struct("ze",ze);
     sysc = plant_sysc(param,option);
+
+    assignin("base","x0",sysc.xe);
+    assignin("base","option",option);
+    % [A,B,C,D] = linmod("plant_simscape");
 
     figure("Name","water_tank bode plot");
     opts = bodeoptions;
