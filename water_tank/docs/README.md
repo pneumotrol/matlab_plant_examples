@@ -1,4 +1,4 @@
-# Mass damper spring
+# Water tank
 
 ## System equations
 
