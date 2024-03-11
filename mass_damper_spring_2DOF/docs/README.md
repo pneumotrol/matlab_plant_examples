@@ -93,10 +93,10 @@ f_1(t) \\ f_2(t)
 
 ![impulse response](impulse.png)
 
-where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]`$
+where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]`$.
 
 ### Bode plot
 
 ![bode plot](bode.png)
 
-where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]`$
+where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]`$.
