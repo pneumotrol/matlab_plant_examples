@@ -10,8 +10,8 @@ function sysc = plant_sysc(param,~)
 
     % coefficients of state equation
     sysc.A = [
-        0, 0, 1, 0;
-        0, 0, 0, 1;
+        0,0,1,0;
+        0,0,0,1;
         0,0,-(d1+d2)/m1,d2/m1;
         0,0,d2/m2,-d2/m2;
         ];

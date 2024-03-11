@@ -31,7 +31,7 @@ f(x(t), u(t))
 
 ### Equilibrium point
 
-The equilibrium point satisfies $`f(x_e, u_e) = 0`$,
+The equilibrium point satisfies $`f(x_e, u_e) = 0`$ thus,
 
 ```math
 \begin{cases}

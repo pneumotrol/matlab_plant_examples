@@ -1,10 +1,11 @@
 function plot_bode()
-    assignin("base","x0",[0;0]);
-    assignin("base","option",struct("qe",0));
+    q1e = pi;
+    assignin("base","x0",[q1e;0]);
+    assignin("base","option",struct("q1e",q1e));
 
     [A,B,C,D] = linmod("plant_simscape");
     param = plant_param();
-    option = struct("qe",0);
+    option = struct("q1e",q1e);
     sysc = plant_sysc(param,option);
 
     figure("Name","pendulum bode plot");

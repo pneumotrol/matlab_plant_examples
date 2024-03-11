@@ -8,13 +8,13 @@ function sysc = plant_sysc(param,~)
 
     % coefficients of state equation
     sysc.A = [
-        0, 1;
-        0,-(d/m)
+        0,1;
+        0,-(d/m);
         ];
 
     sysc.B = [
         0;
-        (1/m)
+        (1/m);
         ];
 
     sysc.C = eye(2);
