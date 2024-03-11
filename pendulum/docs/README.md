@@ -6,6 +6,14 @@
 m l^2 \ddot{\theta}(t) + m l g \sin(\theta(t)) = \tau(t)
 ```
 
+| Description | Symbol and unit |
+|-|-|
+| angle | $`\theta \mathrm{[rad]}`$ |
+| torque | $`\tau \mathrm{[N \cdot m]}`$ |
+| gravity acceleration | $`g \mathrm{[m/s^2]}`$ |
+| mass | $`m \mathrm{[kg]}`$ |
+| length | $`l \mathrm{[m]}`$ |
+
 ## State space equation (plant_ode.m)
 
 ```math
@@ -67,28 +75,28 @@ The equilibrium point satisfies $`f(x_e, u_e) = 0`$ thus,
 
 ### Parameters (plant_param.m)
 
-| Description | Value |
+| Parameter | Value |
 |-|-|
-| gravity acceleration $`g \mathrm{[m/s^2]}`$ | $`9.81`$ |
-| mass $`m \mathrm{[kg]}`$ | $`1.0`$ |
-| length $`l \mathrm{[m]}`$ | $`1.0`$ |
+| $`g \mathrm{[m/s^2]}`$ | $`9.81`$ |
+| $`m \mathrm{[kg]}`$ | $`1.0`$ |
+| $`l \mathrm{[m]}`$ | $`1.0`$ |
 
 ### Impulse response
 
 ![impulse response at bottom](impulse_bottom.png)
 
-where $`x_e = [0, 0]^T`$, $`u_e = [0]`$.
+where $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
 
 ![impulse response at top](impulse_top.png)
 
-where $`x_e = [\pi, 0]^T`$, $`u_e = [0]`$.
+where $`x_e = [\pi, 0]^T`$, $`u_e = [0]^T`$.
 
 ### Bode plot
 
 ![bode plot at top](bode_bottom.png)
 
-where $`x_e = [0, 0]^T`$, $`u_e = [0]`$.
+where $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
 
 ![bode plot at top](bode_top.png)
 
-where $`x_e = [\pi, 0]^T`$, $`u_e = [0]`$.
+where $`x_e = [\pi, 0]^T`$, $`u_e = [0]^T`$.

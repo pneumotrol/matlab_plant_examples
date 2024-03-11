@@ -6,6 +6,15 @@
 A \dot{z}(t) + c a \sqrt{2 g z(t)} = q(t)
 ```
 
+| Description | Symbol and unit |
+|-|-|
+| height of water surface | $`z \mathrm{[m]}`$ |
+| volume flow rate of inflow | $`q \mathrm{[m^3/s]}`$ |
+| gravity acceleration | $`g \mathrm{[m/s^2]}`$ |
+| area of tank | $`A \mathrm{[m^2]}`$ |
+| area of outflow | $`a \mathrm{[m^2]}`$ |
+| flow coefficient of outflow | $`c \mathrm{[-]}`$ |
+
 ## State space equation (plant_ode.m)
 
 ```math
@@ -58,21 +67,21 @@ q(t)
 
 ### Parameters (plant_param.m)
 
-| Description | Value |
+| Parameter | Value |
 |-|-|
-| gravity acceleration $`g \mathrm{[m/s^2]}`$ | $`9.81`$ |
-| area of tank $`A \mathrm{[m^2]}`$ | $`1.0`$ |
-| area of outflow $`a \mathrm{[m^2]}`$ | $`0.1`$ |
-| flow coefficient of outflow $`c \mathrm{[-]}`$ | $`1.0`$ |
+| $`g \mathrm{[m/s^2]}`$ | $`9.81`$ |
+| $`A \mathrm{[m^2]}`$ | $`1.0`$ |
+| $`a \mathrm{[m^2]}`$ | $`0.1`$ |
+| $`c \mathrm{[-]}`$ | $`1.0`$ |
 
 ### Impulse response
 
 ![impulse response](impulse.png)
 
-where $`x_e = [0, 0]^T`$, $`u_e = [0]`$.
+where $`x_e = [1]^T`$, $`u_e = [0.4429]^T`$.
 
 ### Bode plot
 
 ![bode plot](bode.png)
 
-where $`x_e = [0, 0]^T`$, $`u_e = [0]`$.
+where $`x_e = [1]^T`$, $`u_e = [0.4429]^T`$.

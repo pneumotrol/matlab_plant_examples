@@ -11,7 +11,7 @@ examples = [
     "mass_damper_2DOF";
     % "cart_pole";
     "water_tank";
-    % "water_tank_2DOF";
+    "water_tank_2DOF";
     ];
 
 for i = 1:length(examples)

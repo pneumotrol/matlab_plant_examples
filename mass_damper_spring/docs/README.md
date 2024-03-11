@@ -6,6 +6,14 @@
 m \ddot{q}(t) + d \dot{q}(t) + k q(t) = f(t)
 ```
 
+| Description | Symbol and unit |
+|-|-|
+| position | $`q \mathrm{[m]}`$ |
+| force | $`f \mathrm{[N]}`$ |
+| mass | $`m \mathrm{[kg]}`$ |
+| damping coefficient | $`d \mathrm{[N \cdot s/m]}`$ |
+| spring constant | $`k \mathrm{[N/m]}`$ |
+
 ## State space equation (plant_ode.m)
 
 ```math
@@ -67,20 +75,20 @@ f(t)
 
 ### Parameters (plant_param.m)
 
-| Description | Value |
+| Parameter | Value |
 |-|-|
-| mass $`m \mathrm{[kg]}`$ | $`1.0`$ |
-| damping coefficient $`d \mathrm{[N \cdot s/m]}`$ | $`1.0`$ |
-| spring constant $`k \mathrm{[N/m]}`$ | $`1.0`$ |
+| $`m \mathrm{[kg]}`$ | $`1.0`$ |
+| $`d \mathrm{[N \cdot s/m]}`$ | $`1.0`$ |
+| $`k \mathrm{[N/m]}`$ | $`1.0`$ |
 
 ### Impulse response
 
 ![impulse response](impulse.png)
 
-where $`x_e = [0, 0]^T`$, $`u_e = [0]`$.
+where $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
 
 ### Bode plot
 
 ![bode plot](bode.png)
 
-where $`x_e = [0, 0]^T`$, $`u_e = [0]`$.
+where $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.

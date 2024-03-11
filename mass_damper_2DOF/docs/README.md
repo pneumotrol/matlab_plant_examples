@@ -10,6 +10,13 @@ m_2 \ddot{q}_2(t) + d_2 [\dot{q}_2(t) - \dot{q}_1(t)] = f_2(t)
 \end{cases}
 ```
 
+| Description | Symbol and unit |
+|-|-|
+| position | $`q_1, q_2 \mathrm{[m]}`$ |
+| force | $`f_1, f_2 \mathrm{[N]}`$ |
+| mass | $`m_1, m_2 \mathrm{[kg]}`$ |
+| damping coefficient | $`d_1, d_2 \mathrm{[N \cdot s/m]}`$ |
+
 ## State space equation (plant_ode.m)
 
 ```math
@@ -82,21 +89,21 @@ f_1(t) \\ f_2(t)
 
 ### Parameters (plant_param.m)
 
-| Description | Value |
+| Parameter | Value |
 |-|-|
-| mass $`m_1 \mathrm{[kg]}`$ | $`1.0`$ |
-| damping coefficient $`d_1 \mathrm{[N \cdot s/m]}`$ | $`1.0`$ |
-| mass $`m_2 \mathrm{[kg]}`$ | $`1.0`$ |
-| damping coefficient $`d_2 \mathrm{[N \cdot s/m]}`$ | $`1.0`$ |
+| $`m_1 \mathrm{[kg]}`$ | $`1.0`$ |
+| $`d_1 \mathrm{[N \cdot s/m]}`$ | $`1.0`$ |
+| $`m_2 \mathrm{[kg]}`$ | $`1.0`$ |
+| $`d_2 \mathrm{[N \cdot s/m]}`$ | $`1.0`$ |
 
 ### Impulse response
 
 ![impulse response](impulse.png)
 
-where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]`$.
+where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]^T`$.
 
 ### Bode plot
 
 ![bode plot](bode.png)
 
-where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]`$.
+where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]^T`$.
