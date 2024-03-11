@@ -4,6 +4,10 @@ function sysc = plant_sysc(param,option)
     l = param.l;
 
     % equilibrium point
+    if ~isfield(option,"thetae")
+        error("option must have the field of equilibrium point thetae.");
+    end
+
     thetae = option.thetae;
     sysc.xe = [thetae;0];
     sysc.ue = m*l*g*sin(thetae);
