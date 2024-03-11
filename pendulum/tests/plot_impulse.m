@@ -1,7 +1,7 @@
 function plot_impulse()
-    q1e = 0;
-    assignin("base","x0",[q1e;0]);
-    assignin("base","option",struct("q1e",q1e));
+    thetae = 0;
+    assignin("base","x0",[thetae;0]);
+    assignin("base","option",struct("thetae",thetae));
 
     simIn = Simulink.SimulationInput("simulation_impulse");
     simOut = sim(simIn);

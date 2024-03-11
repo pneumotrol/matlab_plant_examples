@@ -1,14 +1,14 @@
 function plot_bode()
-    thetae = 0;
-    assignin("base","x0",[thetae;0]);
-    assignin("base","option",struct("thetae",thetae));
+    ze = 1;
+    assignin("base","x0",[ze;0]);
+    assignin("base","option",struct("ze",ze));
 
-    [A,B,C,D] = linmod("plant_simscape");
+    % [A,B,C,D] = linmod("plant_simscape");
     param = plant_param();
-    option = struct("thetae",thetae);
+    option = struct("ze",ze);
     sysc = plant_sysc(param,option);
 
-    figure("Name","pendulum bode plot");
+    figure("Name","water_tank bode plot");
     opts = bodeoptions;
     opts.Title.String = "";
     opts.XLabel.String = "frequency";
@@ -19,5 +19,6 @@ function plot_bode()
     opts.InputLabels.Color = [1,1,1];
     opts.OutputLabels.Color = [1,1,1];
 
-    bode(ss(A,B,C,D),"-r",ss(sysc.A,sysc.B,sysc.C,sysc.D),":g",opts);
+    % bode(ss(A,B,C,D),"-r",ss(sysc.A,sysc.B,sysc.C,sysc.D),":g",opts);
+    bode(ss(sysc.A,sysc.B,sysc.C,sysc.D),":g",opts);
 end

@@ -3,19 +3,18 @@
 ## System equations
 
 ```math
-m \ddot{q}(t) + d \dot{q}(t) + k q(t) = f(t)
+A \dot{z}(t) + c a \sqrt{2 g z(t)} = q(t)
 ```
 
 ## State space equation (plant_ode.m)
 
 ```math
 \frac{d}{dt} \left[ \begin{array}{c}
-q(t) \\ \dot{q}(t)
+z(t)
 \end{array} \right]
 =
 \left[ \begin{array}{c}
-\dot{q}(t) \\
--\frac{k}{m} q(t) - \frac{d}{m} \dot{q}(t) + \frac{1}{m} f(t)
+-\frac{c a \sqrt{2 g}}{A} \sqrt{z(t)} + \frac{1}{A} q(t)
 \end{array} \right]
 =:
 f(x(t), u(t))
@@ -28,40 +27,32 @@ f(x(t), u(t))
 The equilibrium point satisfies $`f(x_e, u_e) = 0`$ thus,
 
 ```math
-\begin{cases}
-\dot{q}_e = 0 \\
-q_e = \frac{1}{k} f_e
-\end{cases}
+c a \sqrt{2 g z_e} = q_e
 ```
 
 ### Linear state space equation
 
 ```math
 \frac{d}{dt} \left[ \begin{array}{c}
-q(t) \\ \dot{q}(t)
+z(t)
 \end{array} \right]
 =
-\left[ \begin{array}{cc}
-0 & 1 \\
--\frac{k}{m} & -\frac{d}{m}
+\left[ \begin{array}{c}
+-\frac{c a}{2 A} \sqrt{\frac{2 g}{z_e}}
 \end{array} \right]
 
 \left[ \begin{array}{c}
-q(t) \\ \dot{q}(t)
+z(t)
 \end{array} \right]
 +
 \left[ \begin{array}{c}
-0 \\ \frac{1}{m}
+\frac{1}{A}
 \end{array} \right]
 
 \left[ \begin{array}{c}
-f(t)
+q(t)
 \end{array} \right]
 ```
-
-## Simscape (plant_simscape.slx)
-
-![simscape model](simscape.png)
 
 ## Simulation
 
@@ -69,9 +60,10 @@ f(t)
 
 | Description | Value |
 |-|-|
-| mass $`m \mathrm{[kg]}`$ | $`1.0`$ |
-| damping coefficient $`d \mathrm{[N \cdot s/m]}`$ | $`1.0`$ |
-| spring constant $`k \mathrm{[N/m]}`$ | $`1.0`$ |
+| gravity acceleration $`g \mathrm{[m/s^2]}`$ | $`9.81`$ |
+| area of tank $`A \mathrm{[m^2]}`$ | $`1.0`$ |
+| area of outflow $`a \mathrm{[m^2]}`$ | $`0.1`$ |
+| flow coefficient of outflow $`c \mathrm{[-]}`$ | $`1.0`$ |
 
 ### Impulse response
 

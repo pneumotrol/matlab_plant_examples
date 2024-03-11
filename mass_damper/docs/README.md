@@ -61,13 +61,13 @@ f(t)
 \end{array} \right]
 ```
 
-## Simscape (plant_simscape.m)
+## Simscape (plant_simscape.slx)
 
 ![simscape model](simscape.png)
 
 ## Simulation
 
-### Parameters (plant_params.m)
+### Parameters (plant_param.m)
 
 | Description | Value |
 |-|-|

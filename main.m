@@ -10,7 +10,7 @@ examples = [
     "mass_damper_spring_2DOF";
     "mass_damper_2DOF";
     % "cart_pole";
-    % "water_tank";
+    "water_tank";
     % "water_tank_2DOF";
     ];
 

@@ -59,19 +59,19 @@ The equilibrium point satisfies $`f(x_e, u_e) = 0`$ thus,
 \end{array} \right]
 ```
 
-## Simscape (plant_simscape.m)
+## Simscape (plant_simscape.slx)
 
 ![simscape model](simscape.png)
 
 ## Simulation
 
-### Parameters (plant_params.m)
+### Parameters (plant_param.m)
 
 | Description | Value |
 |-|-|
+| gravity acceleration $`g \mathrm{[m/s^2]}`$ | $`9.81`$ |
 | mass $`m \mathrm{[kg]}`$ | $`1.0`$ |
 | length $`l \mathrm{[m]}`$ | $`1.0`$ |
-| gravity acceleration $`g \mathrm{[m/s^2]}`$ | $`9.81`$ |
 
 ### Impulse response
 
