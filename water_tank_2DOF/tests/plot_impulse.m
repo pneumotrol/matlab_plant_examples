@@ -1,7 +1,6 @@
 function plot_impulse()
-    z2e = 1;
     param = plant_param();
-    option = struct("z2e",z2e);
+    option = struct("z2e",1);
     sysc = plant_sysc(param,option);
 
     assignin("base","x0",sysc.xe);

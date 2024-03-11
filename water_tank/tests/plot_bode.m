@@ -1,7 +1,6 @@
 function plot_bode()
-    ze = 1;
     param = plant_param();
-    option = struct("ze",ze);
+    option = struct("ze",1);
     sysc = plant_sysc(param,option);
 
     assignin("base","x0",sysc.xe);
