@@ -272,6 +272,7 @@ where $`x_e = [0, \pi, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at top).
 ![bode plot at top](bode_bottom.png)
 
 where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at bottom).
+
 ![bode plot at top](bode_top.png)
 
 where $`x_e = [0, \pi, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at top).
