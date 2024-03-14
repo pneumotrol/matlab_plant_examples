@@ -2,19 +2,70 @@ function plot_bode()
     param = plant_param();
     sysc = plant_sysc(param);
 
-    assignin("base","x0",sysc.xe);
-    [A,B,C,D] = linmod("plant_simscape");
+    % frequency response of linear model
+    [mag_sysc,phase_sysc,w_vec] = bode(ss(sysc.A,sysc.B,sysc.C,sysc.D));
+
+    % FFT settings
+    N = 32768; % number of points (-)
+    Ts = 0.001; % sampling period (s)
+    t_end = (N-1)*Ts; % simulation time (s)
+    w_tmp = (2*pi*((1:N/2)-1)/(N*Ts))'; % angular frequency vector (Hz)
+
+    % calculate transfer function
+    mag_simscape = zeros(length(w_vec),1);
+    phase_simscape = zeros(length(w_vec),1);
+    mag_ode = zeros(length(w_vec),1);
+    phase_ode = zeros(length(w_vec),1);
+    for i = 1:length(w_vec)
+        w = w_vec(i);
+
+        simIn = Simulink.SimulationInput("simulation_sine");
+        simIn = simIn.setVariable("x0",sysc.xe).setVariable("t_end",t_end).setVariable("Ts",Ts).setVariable("w",w);
+        simOut = sim(simIn);
+
+        % frequency response of simscape
+        u = simOut.logsout.getElement("w").Values.Data;
+        y = simOut.logsout.getElement("x_ode").Values.Data(:,1);
+        [mag_simscape(i),phase_simscape(i)] = calc_transfer_function(u,y,N,w,w_tmp);
+
+        % frequency response of ode
+        u = simOut.logsout.getElement("w").Values.Data;
+        y = simOut.logsout.getElement("x_ode").Values.Data(:,1);
+        [mag_ode(i),phase_ode(i)] = calc_transfer_function(u,y,N,w,w_tmp);
+    end
 
     figure("Name","mass_damper_spring bode plot");
-    opts = bodeoptions;
-    opts.Title.String = "";
-    opts.XLabel.String = "frequency";
-    opts.XLabel.FontSize = 12;
-    opts.YLabel.String = ["magnitude","phase"];
-    opts.YLabel.FontSize = 12;
-    opts.TickLabel.FontSize = 12;
-    opts.InputLabels.Color = [1,1,1];
-    opts.OutputLabels.Color = [1,1,1];
 
-    bode(ss(A,B,C,D),"-r",ss(sysc.A,sysc.B,sysc.C,sysc.D),":g",opts);
+    % magnitude
+    subplot(2,1,1); hold on;
+    p1=plot(w_vec,20*log10(mag_simscape),"-r");
+    p2=plot(w_vec,20*log10(mag_ode),"--b");
+    p3=plot(w_vec,20*log10(mag_sysc(1,:)),":g");
+
+    ax = gca; ax.FontSize = 12; ax.XScale = "log";
+    xlabel("frequency (rad/s)");
+    ylabel("magnitude (dB)");
+    legend([p1(1),p2(1),p3(1)],["simscape","ode","sysc"]);
+
+    % phase
+    subplot(2,1,2); hold on;
+    p1=plot(w_vec,unwrap(phase_simscape)*180/pi,"-r");
+    p2=plot(w_vec,unwrap(phase_ode)*180/pi,"--b");
+    p3=plot(w_vec,phase_sysc(1,:),":g");
+
+    ax = gca; ax.FontSize = 12; ax.XScale = "log";
+    xlabel("frequency (rad/s)");
+    ylabel("phase (deg)");
+    legend([p1(1),p2(1),p3(1)],["simscape","ode","sysc"]);
+end
+
+function [mag,phase] = calc_transfer_function(u,y,N,w,w_tmp)
+    Puu = fft(u,N);
+    Pyy = fft(y,N);
+    Puy = (Pyy.*conj(Puu))./(Puu.*conj(Puu));
+    Puy = Puy(1:N/2);
+    Guy = interp1(w_tmp,Puy,w);
+
+    mag = abs(Guy);
+    phase = angle(Guy);
 end
