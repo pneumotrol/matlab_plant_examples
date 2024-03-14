@@ -5,12 +5,6 @@ function plot_bode()
     % frequency response of linear model
     [mag_sysc,phase_sysc,w_vec] = bode(ss(sysc.A,sysc.B,sysc.C,sysc.D));
 
-    % FFT settings
-    N = 32768; % number of points (-)
-    Ts = 0.001; % sampling period (s)
-    t_end = (N-1)*Ts; % simulation time (s)
-    w_tmp = (2*pi*((1:N/2)-1)/(N*Ts))'; % angular frequency vector (Hz)
-
     % frequency response of simscape and ode model
     mag_simscape = zeros(length(w_vec),1);
     phase_simscape = zeros(length(w_vec),1);
@@ -19,6 +13,12 @@ function plot_bode()
     for i = 1:length(w_vec)
         w = w_vec(i);
 
+        % FFT settings
+        N = 2048; % number of points (-)
+        Ts = (2*pi)/(100*w);
+        t_end = (N-1)*Ts; % simulation time (s)
+        w_tmp = (2*pi*((1:N/2)-1)/(N*Ts))'; % angular frequency vector (Hz)
+
         simIn = Simulink.SimulationInput("simulation_sine");
         simIn = simIn.setVariable("x0",sysc.xe).setVariable("t_end",t_end).setVariable("Ts",Ts).setVariable("w",w);
         simOut = sim(simIn);
@@ -26,7 +26,7 @@ function plot_bode()
         % frequency response of simscape
         [mag_simscape(i),phase_simscape(i)] = calc_frequency_response( ...
             simOut.logsout.getElement("w").Values.Data, ...
-            simOut.logsout.getElement("x_ode").Values.Data(:,1) ...
+            simOut.logsout.getElement("x_simscape").Values.Data(:,1) ...
             ,N,w,w_tmp);
 
         % frequency response of ode

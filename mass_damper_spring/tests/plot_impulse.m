@@ -3,7 +3,7 @@ function plot_impulse()
     sysc = plant_sysc(param);
 
     % impulse response of linear model
-    [~,t,x_sysc] = impulse(ss(sysc.A,sysc.B,sysc.C,sysc.D));
+    [~,t,x_sysc] = impulse(ss(sysc.A,sysc.B,sysc.C,sysc.D),10);
 
     % frequency response of simscape and ode model
     simIn = Simulink.SimulationInput("simulation_impulse");
