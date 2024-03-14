@@ -11,7 +11,7 @@ function plot_bode()
     t_end = (N-1)*Ts; % simulation time (s)
     w_tmp = (2*pi*((1:N/2)-1)/(N*Ts))'; % angular frequency vector (Hz)
 
-    % calculate transfer function
+    % frequency response of simscape and ode model
     mag_simscape = zeros(length(w_vec),1);
     phase_simscape = zeros(length(w_vec),1);
     mag_ode = zeros(length(w_vec),1);
@@ -24,14 +24,16 @@ function plot_bode()
         simOut = sim(simIn);
 
         % frequency response of simscape
-        u = simOut.logsout.getElement("w").Values.Data;
-        y = simOut.logsout.getElement("x_ode").Values.Data(:,1);
-        [mag_simscape(i),phase_simscape(i)] = calc_transfer_function(u,y,N,w,w_tmp);
+        [mag_simscape(i),phase_simscape(i)] = calc_frequency_response( ...
+            simOut.logsout.getElement("w").Values.Data, ...
+            simOut.logsout.getElement("x_ode").Values.Data(:,1) ...
+            ,N,w,w_tmp);
 
         % frequency response of ode
-        u = simOut.logsout.getElement("w").Values.Data;
-        y = simOut.logsout.getElement("x_ode").Values.Data(:,1);
-        [mag_ode(i),phase_ode(i)] = calc_transfer_function(u,y,N,w,w_tmp);
+        [mag_ode(i),phase_ode(i)] = calc_frequency_response( ...
+            simOut.logsout.getElement("w").Values.Data, ...
+            simOut.logsout.getElement("x_ode").Values.Data(:,1), ...
+            N,w,w_tmp);
     end
 
     figure("Name","mass_damper_spring bode plot");
@@ -59,7 +61,7 @@ function plot_bode()
     legend([p1(1),p2(1),p3(1)],["simscape","ode","sysc"]);
 end
 
-function [mag,phase] = calc_transfer_function(u,y,N,w,w_tmp)
+function [mag,phase] = calc_frequency_response(u,y,N,w,w_tmp)
     Puu = fft(u,N);
     Pyy = fft(y,N);
     Puy = (Pyy.*conj(Puu))./(Puu.*conj(Puu));

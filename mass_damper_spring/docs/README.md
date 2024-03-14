@@ -91,4 +91,4 @@ where $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
 
 ![bode plot](bode.png)
 
-where $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
+where $`G(s) = Q(s)/F(s)`$, $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
