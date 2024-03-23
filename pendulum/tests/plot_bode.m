@@ -37,7 +37,7 @@ function plot_bode()
             N,w,w_tmp);
     end
 
-    figure("Name","pendulum bode plot (from torque to angle)");
+    figure("Name","pendulum bode plot (from tau to theta)");
 
     % magnitude
     subplot(2,1,1); hold on;

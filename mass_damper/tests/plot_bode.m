@@ -36,7 +36,7 @@ function plot_bode()
             N,w,w_tmp);
     end
 
-    figure("Name","mass_damper bode plot (from force to position)");
+    figure("Name","mass_damper bode plot (from f to q)");
 
     % magnitude
     subplot(2,1,1); hold on;
