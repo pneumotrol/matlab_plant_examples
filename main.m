@@ -18,8 +18,11 @@ for i = 1:length(examples)
     example = examples(i);
     addpath(genpath(example));
 
+    ts = tic();
+    disp("start example "+example);
     plot_impulse();
     plot_bode();
+    disp("finish example "+example+" in "+toc(ts)+" seconds");
 
     rmpath(genpath(example));
     close_system(find_system);
