@@ -15,7 +15,7 @@ function plot_impulse()
     figure("Name","pendulum impulse response (from tau to all states)"); hold on;
     p1=plot(simOut.logsout.getElement("x_simscape").Values,"-r");
     p2=plot(simOut.logsout.getElement("x_ode").Values,"--b");
-    p3=plot(t,x_sysc,":g");
+    p3=plot(t,x_sysc(:,:,1),":g");
 
     ax = gca; ax.FontSize = 12;
     xlabel("time (s)");
