@@ -1,4 +1,4 @@
-% plot bode diagram from volume flow rate q1 to water level z1, z2
+% plot bode diagram from volume flow rate q to water level z1, z2
 function plot_bode()
     param = plant_param();
     option = struct("z2e",1);
@@ -43,12 +43,12 @@ function plot_bode()
         end
     end
 
-    % from volume flow rate q1 to water level z1
-    figure("Name","water_tank_2DOF bode plot (from q1 to z1)");
+    % from volume flow rate q to water level z1
+    figure("Name","water_tank_2DOF bode plot (from q to z1)");
     plot_bode_sub(w_vec,H_simscape(:,1),H_ode(:,1),H_sysc(:,1));
 
-    % from volume flow rate q1 to water level z2
-    figure("Name","water_tank_2DOF bode plot (from q1 to z2)");
+    % from volume flow rate q to water level z2
+    figure("Name","water_tank_2DOF bode plot (from q to z2)");
     plot_bode_sub(w_vec,H_simscape(:,2),H_ode(:,2),H_sysc(:,2));
 end
 
