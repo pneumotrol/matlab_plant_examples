@@ -2,7 +2,6 @@ function sysc = plant_sysc(param,option)
     g = param.g;
     A = param.A;
     a = param.a;
-    c = param.c;
 
     % equilibrium point
     has_ze = isfield(option,"ze");
@@ -16,14 +15,14 @@ function sysc = plant_sysc(param,option)
     end
 
     if has_qe
-        ze = (option.qe/(c*a))^2/(2*g);
+        ze = (option.qe/a)^2/(2*g);
     end
 
     sysc.xe = ze;
-    sysc.ue = c*a*sqrt(2*g*ze);
+    sysc.ue = a*sqrt(2*g*ze);
 
     % coefficients of state equation
-    sysc.A = -(c*a*sqrt(2*g))/(2*A*sqrt(ze));
+    sysc.A = -(a*sqrt(2*g))/(2*A*sqrt(ze));
 
     sysc.B = (1/A);
 

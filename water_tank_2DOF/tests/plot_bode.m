@@ -55,25 +55,25 @@ end
 function plot_bode_sub(w_vec,H_simscape,H_ode,H_sysc)
     % magnitude
     subplot(2,1,1); hold on;
-    % plot(w_vec,20*log10(abs(H_simscape)),"-r");
+    plot(w_vec,20*log10(abs(H_simscape)),"-r");
     plot(w_vec,20*log10(abs(H_ode)),"--b");
     plot(w_vec,20*log10(abs(H_sysc)),":g");
 
     ax = gca; ax.FontSize = 12; ax.XScale = "log";
     xlabel("frequency (rad/s)");
     ylabel("magnitude (dB)");
-    legend(["ode","sysc"]);
+    legend(["simscape","ode","sysc"]);
 
     % phase
     subplot(2,1,2); hold on;
-    % plot(w_vec,unwrap(angle(H_simscape))*180/pi,"-r");
+    plot(w_vec,unwrap(angle(H_simscape))*180/pi,"-r");
     plot(w_vec,unwrap(angle(H_ode))*180/pi,"--b");
     plot(w_vec,unwrap(angle(H_sysc))*180/pi,":g");
 
     ax = gca; ax.FontSize = 12; ax.XScale = "log";
     xlabel("frequency (rad/s)");
     ylabel("phase (deg)");
-    legend(["ode","sysc"]);
+    legend(["simscape","ode","sysc"]);
 end
 
 function H = freqresp_at_w(u,y,w,w_fft)

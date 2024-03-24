@@ -14,12 +14,12 @@ function plot_impulse()
     simOut = sim(simIn);
 
     figure("Name","water_tank_2DOF impulse response (from q to all states)"); hold on;
-    % p1=plot(simOut.logsout.getElement("x_simscape").Values,"-r");
+    p1=plot(simOut.logsout.getElement("x_simscape").Values,"-r");
     p2=plot(simOut.logsout.getElement("x_ode").Values,"--b");
     p3=plot(t,x_sysc(:,:,1),":g");
 
     ax = gca; ax.FontSize = 12;
     xlabel("time (s)");
     ylabel("state");
-    legend([p2(1),p3(1)],["ode","sysc"]);
+    legend([p1(1),p2(1),p3(1)],["simscape","ode","sysc"]);
 end
