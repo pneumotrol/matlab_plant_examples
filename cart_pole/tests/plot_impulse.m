@@ -1,3 +1,4 @@
+% plot impulse response from force f to all states
 function plot_impulse()
     param = plant_param();
     option = struct("mode","bottom");
@@ -6,7 +7,7 @@ function plot_impulse()
     % impulse response of linear model
     [~,t,x_sysc] = impulse(ss(sysc.A,sysc.B,sysc.C,sysc.D),10);
 
-    % frequency response of simscape and ode model
+    % impulse response of simscape and ode model
     simIn = Simulink.SimulationInput("simulation_impulse");
     simIn = simIn.setVariable("x0",sysc.xe).setVariable("t_end",t(end));
     simOut = sim(simIn);
