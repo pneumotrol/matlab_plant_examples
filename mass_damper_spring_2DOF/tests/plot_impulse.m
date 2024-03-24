@@ -9,6 +9,7 @@ function plot_impulse()
     % impulse response of simscape and ode model
     simIn = Simulink.SimulationInput("simulation_impulse");
     simIn = simIn.setVariable("x0",sysc.xe).setVariable("t_end",t(end));
+    simIn = simIn.setVariable("ue",sysc.ue).setVariable("xe",sysc.xe);
     simOut = sim(simIn);
 
     figure("Name","mass_damper_spring_2DOF impulse response (from f1 to all states)"); hold on;
