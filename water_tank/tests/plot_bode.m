@@ -1,23 +1,79 @@
+% plot bode diagram from volume flow rate q to water level z
 function plot_bode()
     param = plant_param();
     option = struct("ze",1);
     sysc = plant_sysc(param,option);
 
-    assignin("base","x0",sysc.xe);
-    assignin("base","option",option);
-    % [A,B,C,D] = linmod("plant_simscape");
+    % range of bode diagram
+    w_vec = logspace(-2,2,51);
 
-    figure("Name","water_tank bode plot");
-    opts = bodeoptions;
-    opts.Title.String = "";
-    opts.XLabel.String = "frequency";
-    opts.XLabel.FontSize = 12;
-    opts.YLabel.String = ["magnitude","phase"];
-    opts.YLabel.FontSize = 12;
-    opts.TickLabel.FontSize = 12;
-    opts.InputLabels.Color = [1,1,1];
-    opts.OutputLabels.Color = [1,1,1];
+    % frequency response of linear model
+    H_sysc = freqresp(ss(sysc.A,sysc.B,sysc.C,sysc.D),w_vec);
+    H_sysc = [squeeze(H_sysc(1,1,:))];
 
-    % bode(ss(A,B,C,D),"-r",ss(sysc.A,sysc.B,sysc.C,sysc.D),":g",opts);
-    bode(ss(sysc.A,sysc.B,sysc.C,sysc.D),":g",opts);
+    % frequency response of simscape and ode model
+    H_simscape = zeros(length(w_vec),1);
+    H_ode = zeros(length(w_vec),1);
+    for i = 1:length(w_vec)
+        w = w_vec(i);
+
+        % FFT settings
+        N = 2048; % number of points (-)
+        Ts = (2*pi)/(100*w); % sampling period (s)
+        t_end = (N-1)*Ts; % simulation time (s)
+        w_fft = (2*pi*((1:N/2)-1)/(N*Ts))'; % angular frequency vector (Hz)
+
+        simIn = Simulink.SimulationInput("simulation_sine");
+        simIn = simIn.setVariable("x0",sysc.xe).setVariable("t_end",t_end).setVariable("Ts",Ts).setVariable("w",w);
+        simIn = simIn.setVariable("ue",sysc.ue).setVariable("xe",sysc.xe);
+        simOut = sim(simIn);
+
+        % frequency response of simscape
+        H_simscape(i) = freqresp_at_w( ...
+            simOut.logsout.getElement("u").Values.Data, ...
+            simOut.logsout.getElement("x_simscape").Values.Data(:,1), ...
+            w,w_fft);
+
+        % frequency response of ode
+        H_ode(i) = freqresp_at_w( ...
+            simOut.logsout.getElement("u").Values.Data, ...
+            simOut.logsout.getElement("x_ode").Values.Data(:,1), ...
+            w,w_fft);
+    end
+
+    % from volume flow rate q to water level z
+    figure("Name","water_tank bode plot (from q to z)");
+    plot_bode_sub(w_vec,H_simscape(:,1),H_ode(:,1),H_sysc(:,1));
+end
+
+function plot_bode_sub(w_vec,H_simscape,H_ode,H_sysc)
+    % magnitude
+    subplot(2,1,1); hold on;
+    % plot(w_vec,20*log10(abs(H_simscape)),"-r");
+    plot(w_vec,20*log10(abs(H_ode)),"--b");
+    plot(w_vec,20*log10(abs(H_sysc)),":g");
+
+    ax = gca; ax.FontSize = 12; ax.XScale = "log";
+    xlabel("frequency (rad/s)");
+    ylabel("magnitude (dB)");
+    legend(["ode","sysc"]);
+
+    % phase
+    subplot(2,1,2); hold on;
+    % plot(w_vec,unwrap(angle(H_simscape))*180/pi,"-r");
+    plot(w_vec,unwrap(angle(H_ode))*180/pi,"--b");
+    plot(w_vec,unwrap(angle(H_sysc))*180/pi,":g");
+
+    ax = gca; ax.FontSize = 12; ax.XScale = "log";
+    xlabel("frequency (rad/s)");
+    ylabel("phase (deg)");
+    legend(["ode","sysc"]);
+end
+
+function H = freqresp_at_w(u,y,w,w_fft)
+    Puu = fft(u);
+    Pyy = fft(y);
+    Puy = (Pyy.*conj(Puu))./(Puu.*conj(Puu));
+
+    H = interp1(w_fft,Puy(1:length(w_fft)),w);
 end
