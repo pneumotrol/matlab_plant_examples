@@ -259,24 +259,16 @@ where $`x_e = [0, \pi, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at top).
 
 ### Impulse response (plot_impulse.m)
 
-![impulse response at bottom](impulse_bottom.png)
+![impulse response at bottom](impulse.png)
 
-where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at bottom).
-
-![impulse response at top](impulse_top.png)
-
-where $`x_e = [0, \pi, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at top).
+where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0]^T`$.
 
 ### Bode plot (plot_bode.m)
 
-![bode plot at bottom from f to q](bode_bottom1.png)
+![bode plot from f to q](bode1.png)
 
-where $`G_1(s) = Q(s)/F(s)`$, $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at bottom).
+where $`G_1(s) = Q(s)/F(s)`$, $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0]^T`$.
 
-![bode plot at bottom from f to theta](bode_bottom2.png)
+![bode plot from f to theta](bode2.png)
 
-where $`G_2(s) = \Theta(s)/F(s)`$, $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at bottom).
-
-![bode plot at top](bode_top.png)
-
-where $`x_e = [0, \pi, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at top).
+where $`G_2(s) = \Theta(s)/F(s)`$, $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0]^T`$.

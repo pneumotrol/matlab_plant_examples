@@ -83,20 +83,12 @@ The equilibrium point satisfies $`f(x_e, u_e) = 0`$ thus,
 
 ### Impulse response (plot_impulse.m)
 
-![impulse response at bottom](impulse_bottom.png)
+![impulse response](impulse.png)
 
 where $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
 
-![impulse response at top](impulse_top.png)
-
-where $`x_e = [\pi, 0]^T`$, $`u_e = [0]^T`$.
-
 ### Bode plot (plot_bode.m)
 
-![bode plot at bottom](bode_bottom.png)
+![bode plot](bode.png)
 
 where $`G(s) = \Theta(s)/\Tau(s)`$, $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
-
-![bode plot at top](bode_top.png)
-
-where $`G(s) = \Theta(s)/\Tau(s)`$, $`x_e = [\pi, 0]^T`$, $`u_e = [0]^T`$.
