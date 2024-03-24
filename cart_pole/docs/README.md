@@ -132,7 +132,7 @@ f(t) \\ 0
 | cart position | $`q \mathrm{[m]}`$ |
 | pendulum angle | $`\theta \mathrm{[rad]}`$ |
 | force on cart | $`f \mathrm{[N]}`$ |
-| gravity acceleration | $`g \mathrm{[m/s^2]}`$ |
+| gravitational acceleration | $`g \mathrm{[m/s^2]}`$ |
 | cart mass | $`M \mathrm{[kg]}`$ |
 | cart damping coefficient | $`D \mathrm{[N \cdot s/m]}`$ |
 | pendulum mass | $`m \mathrm{[kg]}`$ |
@@ -257,7 +257,7 @@ where $`x_e = [0, \pi, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at top).
 | $`J \mathrm{[kg \cdot m^2]}`$ | $`0.006`$ |
 | $`l_g \mathrm{[m]}`$ | $`0.3`$ |
 
-### Impulse response
+### Impulse response (plot_impulse.m)
 
 ![impulse response at bottom](impulse_bottom.png)
 
@@ -267,11 +267,15 @@ where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at bottom).
 
 where $`x_e = [0, \pi, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at top).
 
-### Bode plot
+### Bode plot (plot_bode.m)
 
-![bode plot at top](bode_bottom.png)
+![bode plot at bottom from f to q](bode_bottom1.png)
 
-where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at bottom).
+where $`G_1(s) = Q(s)/F(s)`$, $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at bottom).
+
+![bode plot at bottom from f to theta](bode_bottom2.png)
+
+where $`G_2(s) = \Theta(s)/F(s)`$, $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0]^T`$ (pendulum is at bottom).
 
 ![bode plot at top](bode_top.png)
 

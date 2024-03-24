@@ -97,14 +97,18 @@ f_1(t) \\ f_2(t)
 | $`d_2 \mathrm{[N \cdot s/m]}`$ | $`1.0`$ |
 | $`k_2 \mathrm{[N/m]}`$ | $`1.0`$ |
 
-### Impulse response
+### Impulse response (plot_impulse.m)
 
 ![impulse response](impulse.png)
 
-where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]^T`$.
+where $`u = [\delta(t), 0]^T`$, $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]^T`$.
 
-### Bode plot
+### Bode plot (plot_bode.m)
 
-![bode plot](bode.png)
+![bode plot from f1 to q1](bode1.png)
 
-where $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]^T`$.
+where $`G_1(s) = Q_1(s)/F_1(s)`$, $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]^T`$.
+
+![bode plot from f1 to q2](bode2.png)
+
+where $`G_2(s) = Q_2(s)/F_1(s)`$, $`x_e = [0, 0, 0, 0]^T`$, $`u_e = [0, 0]^T`$.

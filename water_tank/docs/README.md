@@ -3,17 +3,16 @@
 ## System equations
 
 ```math
-A \dot{z}(t) + c a \sqrt{2 g z(t)} = q(t)
+A \dot{z}(t) + a \sqrt{2 g z(t)} = q(t)
 ```
 
 | Description | Symbol and unit |
 |-|-|
-| height of water surface | $`z \mathrm{[m]}`$ |
+| water level | $`z \mathrm{[m]}`$ |
 | volume flow rate of inflow | $`q \mathrm{[m^3/s]}`$ |
-| gravity acceleration | $`g \mathrm{[m/s^2]}`$ |
-| area of tank | $`A \mathrm{[m^2]}`$ |
-| area of outflow | $`a \mathrm{[m^2]}`$ |
-| flow coefficient of outflow | $`c \mathrm{[-]}`$ |
+| gravitational acceleration | $`g \mathrm{[m/s^2]}`$ |
+| cross-sectional area of tank | $`A \mathrm{[m^2]}`$ |
+| cross-sectional area of outflow | $`a \mathrm{[m^2]}`$ |
 
 ## State space equation (plant_ode.m)
 
@@ -23,7 +22,7 @@ z(t)
 \end{array} \right]
 =
 \left[ \begin{array}{c}
--\frac{c a \sqrt{2 g}}{A} \sqrt{z(t)} + \frac{1}{A} q(t)
+-\frac{a \sqrt{2 g}}{A} \sqrt{z(t)} + \frac{1}{A} q(t)
 \end{array} \right]
 =:
 f(x(t), u(t))
@@ -36,7 +35,7 @@ f(x(t), u(t))
 The equilibrium point satisfies $`f(x_e, u_e) = 0`$ thus,
 
 ```math
-c a \sqrt{2 g z_e} = q_e
+a \sqrt{2 g z_e} = q_e
 ```
 
 ### Linear state space equation
@@ -47,7 +46,7 @@ z(t)
 \end{array} \right]
 =
 \left[ \begin{array}{c}
--\frac{c a}{2 A} \sqrt{\frac{2 g}{z_e}}
+-\frac{a}{2 A} \sqrt{\frac{2 g}{z_e}}
 \end{array} \right]
 
 \left[ \begin{array}{c}
@@ -72,16 +71,15 @@ q(t)
 | $`g \mathrm{[m/s^2]}`$ | $`9.81`$ |
 | $`A \mathrm{[m^2]}`$ | $`1.0`$ |
 | $`a \mathrm{[m^2]}`$ | $`0.1`$ |
-| $`c \mathrm{[-]}`$ | $`1.0`$ |
 
-### Impulse response
+### Impulse response (plot_impulse.m)
 
 ![impulse response](impulse.png)
 
 where $`x_e = [1]^T`$, $`u_e = [0.4429]^T`$.
 
-### Bode plot
+### Bode plot (plot_bode.m)
 
 ![bode plot](bode.png)
 
-where $`x_e = [1]^T`$, $`u_e = [0.4429]^T`$.
+where $`G(s) = Z(s)/Q(s)`$, $`x_e = [1]^T`$, $`u_e = [0.4429]^T`$.

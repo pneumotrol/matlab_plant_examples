@@ -10,7 +10,7 @@ m l^2 \ddot{\theta}(t) + m l g \sin(\theta(t)) = \tau(t)
 |-|-|
 | angle | $`\theta \mathrm{[rad]}`$ |
 | torque | $`\tau \mathrm{[N \cdot m]}`$ |
-| gravity acceleration | $`g \mathrm{[m/s^2]}`$ |
+| gravitational acceleration | $`g \mathrm{[m/s^2]}`$ |
 | mass | $`m \mathrm{[kg]}`$ |
 | length | $`l \mathrm{[m]}`$ |
 
@@ -81,7 +81,7 @@ The equilibrium point satisfies $`f(x_e, u_e) = 0`$ thus,
 | $`m \mathrm{[kg]}`$ | $`1.0`$ |
 | $`l \mathrm{[m]}`$ | $`1.0`$ |
 
-### Impulse response
+### Impulse response (plot_impulse.m)
 
 ![impulse response at bottom](impulse_bottom.png)
 
@@ -91,12 +91,12 @@ where $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
 
 where $`x_e = [\pi, 0]^T`$, $`u_e = [0]^T`$.
 
-### Bode plot
+### Bode plot (plot_bode.m)
 
-![bode plot at top](bode_bottom.png)
+![bode plot at bottom](bode_bottom.png)
 
-where $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
+where $`G(s) = \Theta(s)/\Tau(s)`$, $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
 
 ![bode plot at top](bode_top.png)
 
-where $`x_e = [\pi, 0]^T`$, $`u_e = [0]^T`$.
+where $`G(s) = \Theta(s)/\Tau(s)`$, $`x_e = [\pi, 0]^T`$, $`u_e = [0]^T`$.

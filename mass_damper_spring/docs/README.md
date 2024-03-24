@@ -81,13 +81,13 @@ f(t)
 | $`d \mathrm{[N \cdot s/m]}`$ | $`1.0`$ |
 | $`k \mathrm{[N/m]}`$ | $`1.0`$ |
 
-### Impulse response
+### Impulse response (plot_impulse.m)
 
 ![impulse response](impulse.png)
 
 where $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
 
-### Bode plot
+### Bode plot (plot_bode.m)
 
 ![bode plot](bode.png)
 

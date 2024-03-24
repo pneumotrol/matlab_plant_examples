@@ -6,7 +6,7 @@ function param = plant_param()
     % parameters
     % Control Tutorials for MATLAB and Simulink
     % https://ctms.engin.umich.edu/CTMS/index.php?example=InvertedPendulum&section=SystemModeling
-    param.g = 9.8; % gravity acceleration (m/s^2)
+    param.g = 9.8; % gravitational acceleration (m/s^2)
     param.M = 0.5; % mass of cart (kg)
     param.D = 0.1; % damping coefficent of cart (N.s/m)
     param.m = 0.2; % mass of pole (kg)

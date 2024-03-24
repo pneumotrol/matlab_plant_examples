@@ -81,14 +81,14 @@ f(t)
 | $`m \mathrm{[kg]}`$ | $`1.0`$ |
 | $`d \mathrm{[N \cdot s/m]}`$ | $`1.0`$ |
 
-### Impulse response
+### Impulse response (plot_impulse.m)
 
 ![impulse response](impulse.png)
 
 where $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
 
-### Bode plot
+### Bode plot (plot_bode.m)
 
 ![bode plot](bode.png)
 
-where $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
+where $`G(s) = Q(s)/F(s)`$, $`x_e = [0, 0]^T`$, $`u_e = [0]^T`$.
