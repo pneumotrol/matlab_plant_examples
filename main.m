@@ -12,6 +12,7 @@ examples = [
     "cart_pole";
     "water_tank";
     "water_tank_2DOF";
+    "ball_beam";
     ];
 
 for i = 1:length(examples)
