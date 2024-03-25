@@ -38,9 +38,11 @@ The equilibrium point satisfies $`f(x_e, u_e) = 0`$ thus,
 ```math
 \begin{cases}
 \dot{\theta}_e = 0 \\
-\sin(\theta_e) = \frac{1}{m l g} \tau_e
+\tau_e = m l g \sin(\theta_e)
 \end{cases}
 ```
+
+where $`\theta_e`$ is arbitrary.
 
 ### Linear state space equation
 
